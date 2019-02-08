@@ -1,3 +1,17 @@
+# Ignore temp files
+*~
+
+# Ignore extraneous folders
+.gradle
+.vscode
+.wpilib
+build
+gradle
+
+# Ignore extraneous files
+*.gradle
+*.bat
+
 # Prerequisites
 *.d
 
