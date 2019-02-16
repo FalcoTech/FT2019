@@ -36,7 +36,14 @@ private:
 	
 	
 	
+	
+	
+	
+	
+	
 	std::shared_ptr<frc::Joystick> co_Pilot;
+	std::shared_ptr<frc::JoystickButton> fightRT;
+	std::shared_ptr<frc::JoystickButton> fightLT;
 	std::shared_ptr<frc::JoystickButton> fightSR;
 	std::shared_ptr<frc::JoystickButton> fightSL;
 	std::shared_ptr<frc::JoystickButton> fightOption;

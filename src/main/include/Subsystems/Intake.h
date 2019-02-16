@@ -44,7 +44,7 @@ public:
 	std::shared_ptr<frc::DoubleSolenoid> hatch;
 	std::shared_ptr<frc::DoubleSolenoid> clawTilt;
 	std::shared_ptr<frc::DoubleSolenoid> clawExtend;
-
+	std::shared_ptr<frc::DigitalInput> breakBeam;
 	std::shared_ptr<LightDriveCAN> leds;
 };
 
