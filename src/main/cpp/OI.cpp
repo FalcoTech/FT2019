@@ -32,6 +32,7 @@
 #include "Commands/LiftDefault.h"
 #include "Commands/LiftFrontForward.h"
 #include "Commands/LiftFrontReverse.h"
+#include "Commands/LightsDefault.h"
 #include "Commands/Premade1.h"
 #include "Commands/Premade2.h"
 #include "Commands/Premade3.h"
@@ -97,6 +98,7 @@ OI::OI() {
     frc::SmartDashboard::PutData("IntakeBackwards", new IntakeBackwards());
     frc::SmartDashboard::PutData("IntakeForward", new IntakeForward());
     frc::SmartDashboard::PutData("IntakeDefault", new IntakeDefault());
+    frc::SmartDashboard::PutData("LightsDefault", new LightsDefault());
     frc::SmartDashboard::PutData("LiftFrontReverse", new LiftFrontReverse());
     frc::SmartDashboard::PutData("LiftFrontForward", new LiftFrontForward());
     frc::SmartDashboard::PutData("LiftBackReverse", new LiftBackReverse());

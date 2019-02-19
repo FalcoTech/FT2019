@@ -30,11 +30,11 @@ void IntakeHatch::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void IntakeHatch::Execute() {
     if(pneumaticStatus == true){
-        Robot::intake->hatch->Set(frc::DoubleSolenoid::Value::kForward);
+        Robot::intake->hatch->Set(true);
         pneumaticStatus = false;
     }
     else{
-        Robot::intake->hatch->Set(frc::DoubleSolenoid::Value::kReverse);
+        Robot::intake->hatch->Set(false);
         pneumaticStatus = true;
     }
 }

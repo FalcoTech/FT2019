@@ -27,9 +27,11 @@ private:
 	std::shared_ptr<frc::SpeedController> leftA;
 	std::shared_ptr<frc::SpeedController> leftB;
 	std::shared_ptr<frc::SpeedController> leftC;
+	//std::shared_ptr<frc::SpeedControllerGroup> leftMotors;
 	std::shared_ptr<frc::SpeedController> rightA;
 	std::shared_ptr<frc::SpeedController> rightB;
 	std::shared_ptr<frc::SpeedController> rightC;
+	//std::shared_ptr<frc::SpeedControllerGroup> rightMotors;
 	//std::shared_ptr<frc::RobotDrive> robotDrive;
 	//std::shared_ptr<frc::DoubleSolenoid> shifter;
 

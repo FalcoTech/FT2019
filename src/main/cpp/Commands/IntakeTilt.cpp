@@ -30,11 +30,11 @@ void IntakeTilt::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void IntakeTilt::Execute() {
     if(pneumaticStatus == true){
-        Robot::intake->clawTilt->Set(frc::DoubleSolenoid::Value::kForward);
+        Robot::intake->clawTilt->Set(true);
         pneumaticStatus = false;
     }
     else{
-        Robot::intake->clawTilt->Set(frc::DoubleSolenoid::Value::kReverse);
+        Robot::intake->clawTilt->Set(false);
         pneumaticStatus = true;
     }
 }
