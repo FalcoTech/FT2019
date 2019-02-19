@@ -30,13 +30,13 @@ void ChassisReverse::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void ChassisReverse::Execute() {
     if (Robot::chassis->isReversed){
-        Robot::chassis->leftMotors->SetInverted(false);
-        Robot::chassis->rightMotors->SetInverted(false);
+        Robot::chassis->leftMotors->SetInverted(true);
+        Robot::chassis->rightMotors->SetInverted(true);
         Robot::chassis->isReversed = false;
     }
     else{
-        Robot::chassis->leftMotors->SetInverted(true);
-        Robot::chassis->rightMotors->SetInverted(true);
+        Robot::chassis->leftMotors->SetInverted(false);
+        Robot::chassis->rightMotors->SetInverted(false);
         Robot::chassis->isReversed = true;
     }
 }

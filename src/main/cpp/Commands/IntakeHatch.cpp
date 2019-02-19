@@ -24,18 +24,18 @@ IntakeHatch::IntakeHatch(): frc::Command() {
 
 // Called just before this Command runs the first time
 void IntakeHatch::Initialize() {
-    pneumaticStatus = true;
+
 }
 
 // Called repeatedly when this Command is scheduled to run
 void IntakeHatch::Execute() {
-    if(pneumaticStatus == true){
+    if(Robot::intake->hatchEngaged){
         Robot::intake->hatch->Set(true);
-        pneumaticStatus = false;
+        Robot::intake->hatchEngaged = false;
     }
     else{
         Robot::intake->hatch->Set(false);
-        pneumaticStatus = true;
+        Robot::intake->hatchEngaged = true;
     }
 }
 

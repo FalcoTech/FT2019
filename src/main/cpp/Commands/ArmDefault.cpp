@@ -29,8 +29,18 @@ void ArmDefault::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ArmDefault::Execute() {
-    frc::SmartDashboard::PutNumber("Angle Voltage", Robot::arm->angle->GetAverageVoltage());
-    frc::SmartDashboard::PutNumber("Angle", ( 180 * Robot::arm->angle->GetAverageVoltage() ) / 4);
+    //frc::SmartDashboard::PutNumber("Angle Voltage", Robot::arm->angle->GetAverageVoltage());
+    //frc::SmartDashboard::PutNumber("Angle", ( 180 * Robot::arm->angle->GetAverageVoltage() ) / 4);
+    if (Robot::oi->getCo_Pilot()->GetRawAxis(Robot::oi->LEFT_Y_AXIS) == 1.0){
+        Robot::arm->armMotor->Set(1.0);
+    }
+    else if (Robot::oi->getCo_Pilot()->GetRawAxis(Robot::oi->LEFT_Y_AXIS) == -1.0){
+        Robot::arm->armMotor->Set(-1.0);
+    }
+    else {
+        Robot::arm->armMotor->Set(0.0);
+    }
+    
 }
 
 // Make this return true when this Command no longer needs to run execute()

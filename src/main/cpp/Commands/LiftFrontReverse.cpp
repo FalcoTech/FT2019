@@ -28,7 +28,7 @@ void LiftFrontReverse::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void LiftFrontReverse::Execute() {
-    Robot::intake->cargo->Set(-1.0);
+    Robot::lift->front->Set(-1.0);
 }
 
 // Make this return true when this Command no longer needs to run execute()

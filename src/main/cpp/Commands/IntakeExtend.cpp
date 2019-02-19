@@ -24,18 +24,18 @@ IntakeExtend::IntakeExtend(): frc::Command() {
 
 // Called just before this Command runs the first time
 void IntakeExtend::Initialize() {
-    pneumaticStatus = true;
+
 }
 
 // Called repeatedly when this Command is scheduled to run
 void IntakeExtend::Execute() {
-    if(pneumaticStatus == true){
+    if(Robot::intake->isExtended){
         Robot::intake->clawExtend->Set(frc::DoubleSolenoid::Value::kForward);
-        pneumaticStatus = false;
+        Robot::intake->isExtended = false;
     }
     else{
         Robot::intake->clawExtend->Set(frc::DoubleSolenoid::Value::kReverse);
-        pneumaticStatus = true;
+        Robot::intake->isExtended = true;
     }
 }
 

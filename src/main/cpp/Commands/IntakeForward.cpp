@@ -24,14 +24,14 @@ IntakeForward::IntakeForward(): frc::Command() {
 
 // Called just before this Command runs the first time
 void IntakeForward::Initialize() {
-
+    Robot::leds->SetColor(1, LightDriveCAN::Colors::GREEN, 1.0);
+    Robot::leds->Update();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void IntakeForward::Execute() {
     Robot::intake->cargo->Set(1.0);
-    Robot::intake->leds->SetColor(1, LightDriveCAN::Colors::BLUE, 1.0);
-    Robot::intake->leds->Update();
+    
 }
 
 // Make this return true when this Command no longer needs to run execute()

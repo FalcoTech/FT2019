@@ -24,12 +24,14 @@ IntakeDefault::IntakeDefault(): frc::Command() {
 
 // Called just before this Command runs the first time
 void IntakeDefault::Initialize() {
-
+    Robot::leds->SetColor(1, LightDriveCAN::Colors::OFF);
+    Robot::leds->Update();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void IntakeDefault::Execute() {
-    Robot::intake->cargo->Set(0);
+    Robot::intake->cargo->Set(0.0);
+
 }
 
 // Make this return true when this Command no longer needs to run execute()

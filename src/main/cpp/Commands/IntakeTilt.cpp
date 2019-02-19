@@ -24,18 +24,18 @@ IntakeTilt::IntakeTilt(): frc::Command() {
 
 // Called just before this Command runs the first time
 void IntakeTilt::Initialize() {
-    pneumaticStatus = true; 
+    
 }
 
 // Called repeatedly when this Command is scheduled to run
 void IntakeTilt::Execute() {
-    if(pneumaticStatus == true){
+    if(Robot::intake->isTilted){
         Robot::intake->clawTilt->Set(true);
-        pneumaticStatus = false;
+        Robot::intake->isTilted = false;
     }
     else{
         Robot::intake->clawTilt->Set(false);
-        pneumaticStatus = true;
+        Robot::intake->isTilted = true;
     }
 }
 

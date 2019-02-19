@@ -29,7 +29,8 @@ void LiftDefault::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void LiftDefault::Execute() {
-
+    Robot::lift->back->Set(0.0);
+    Robot::lift->front->Set(0.0);
 }
 
 // Make this return true when this Command no longer needs to run execute()

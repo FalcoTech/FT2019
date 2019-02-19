@@ -29,13 +29,19 @@ void ChassisShift::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ChassisShift::Execute() {
-    if(pneumaticStatus == true){
+    if (pneumaticStatus == true){
         Robot::chassis->shifter->Set(frc::DoubleSolenoid::Value::kForward);
         pneumaticStatus = false;
+
+        Robot::leds->SetColor(2, LightDriveCAN::Colors::RED);
+        Robot::leds->Update();
     }
-    else{
+    else {
         Robot::chassis->shifter->Set(frc::DoubleSolenoid::Value::kReverse);
         pneumaticStatus = true;
+
+        Robot::leds->SetColor(2, LightDriveCAN::Colors::BLUE);
+        Robot::leds->Update();
     }
 }
 
