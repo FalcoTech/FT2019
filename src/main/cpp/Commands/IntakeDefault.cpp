@@ -30,8 +30,16 @@ void IntakeDefault::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void IntakeDefault::Execute() {
-    Robot::intake->cargo->Set(0.0);
-
+    if (Robot::oi->getCo_Pilot()->GetRawAxis(Robot::oi->L_Trigger) == 1.0){
+        Robot::intake->cargo->Set(-1.0);
+        Robot::leds->SetColor(1, LightDriveCAN::Colors::RED, 1.0);
+        Robot::leds->Update();
+    }
+    else {
+        Robot::intake->cargo->Set(0.0);
+        Robot::leds->SetColor(1, LightDriveCAN::Colors::OFF);
+        Robot::leds->Update();
+    }
 }
 
 // Make this return true when this Command no longer needs to run execute()

@@ -30,7 +30,12 @@ void LiftDefault::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void LiftDefault::Execute() {
     Robot::lift->back->Set(0.0);
-    Robot::lift->front->Set(0.0);
+    if (Robot::oi->getCo_Pilot()->GetRawAxis(Robot::oi->R_Trigger) == 1.0){
+        Robot::lift->front->Set(1.0);
+    }
+    else {
+        Robot::lift->front->Set(0.0);
+    }
 }
 
 // Make this return true when this Command no longer needs to run execute()

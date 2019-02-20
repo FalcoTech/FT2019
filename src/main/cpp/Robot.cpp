@@ -36,10 +36,17 @@ void Robot::RobotInit() {
 	leds.reset(new LightDriveCAN());
 
 	// Initializing pneumatic states
-	chassis->isReversed = false;
+	chassis->isReversed = true;
+	chassis->pneumaticStatus = false;
 	intake->isExtended = false;
-	intake->hatchEngaged = false;
+	intake->hatchEngaged = true;
 	intake->isTilted = false;
+	Robot::chassis->shifter->Set(frc::DoubleSolenoid::Value::kReverse);
+	Robot::intake->clawExtend->Set(frc::DoubleSolenoid::Value::kReverse);
+	Robot::intake->hatch->Set(false);
+	Robot::intake->clawTilt->Set(false);
+	
+	frc::CameraServer::GetInstance()->StartAutomaticCapture();
 
 	// This MUST be here. If the OI creates Commands (which it very likely
 	// will), constructing it during the construction of CommandBase (from
@@ -63,7 +70,10 @@ void Robot::RobotInit() {
  * You can use it to reset subsystems before shutting down.
  */
 void Robot::DisabledInit(){
-
+	Robot::chassis->shifter->Set(frc::DoubleSolenoid::Value::kReverse);
+	Robot::intake->clawExtend->Set(frc::DoubleSolenoid::Value::kReverse);
+	Robot::intake->hatch->Set(false);
+	Robot::intake->clawTilt->Set(false);
 }
 
 void Robot::DisabledPeriodic() {
