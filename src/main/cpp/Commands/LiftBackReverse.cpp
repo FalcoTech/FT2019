@@ -23,12 +23,12 @@ LiftBackReverse::LiftBackReverse(): frc::Command() {
 
 // Called just before this Command runs the first time
 void LiftBackReverse::Initialize() {
-
+    
 }
 
 // Called repeatedly when this Command is scheduled to run
 void LiftBackReverse::Execute() {
-    Robot::lift->back->Set(-1.0);
+    
 }
 
 // Make this return true when this Command no longer needs to run execute()

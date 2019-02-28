@@ -29,17 +29,19 @@ void LiftFrontForward::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void LiftFrontForward::Execute() {
-
+     if (!Robot::lift->hallUp->Get()){ 
+         Robot::lift->front->Set(1.0);
+     }
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool LiftFrontForward::IsFinished() {
-    return false;
+    return !Robot::lift->hallUp->Get();
 }
 
 // Called once after isFinished returns true
 void LiftFrontForward::End() {
-
+        Robot::lift->front->Set(0.0);
 }
 
 // Called when another command which requires one or more of the same

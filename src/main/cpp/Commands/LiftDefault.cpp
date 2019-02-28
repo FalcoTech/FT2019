@@ -24,23 +24,23 @@ LiftDefault::LiftDefault(): frc::Command() {
 
 // Called just before this Command runs the first time
 void LiftDefault::Initialize() {
-
+    Robot::lift->front->Set(0.0); 
 }
 
 // Called repeatedly when this Command is scheduled to run
 void LiftDefault::Execute() {
-    Robot::lift->back->Set(0.0);
+
+    // Axis control for front lift
     if (Robot::oi->getCo_Pilot()->GetRawAxis(Robot::oi->R_Trigger) == 1.0){
-        Robot::lift->front->Set(1.0);
+        Robot::lift->back->Set(-1.0);
     }
     else {
-        Robot::lift->front->Set(0.0);
+        Robot::lift->back->Set(0.0);
     }
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool LiftDefault::IsFinished() {
-    return false;
 }
 
 // Called once after isFinished returns true

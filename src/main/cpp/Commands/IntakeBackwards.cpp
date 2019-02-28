@@ -26,11 +26,11 @@ IntakeBackwards::IntakeBackwards(): frc::Command() {
 void IntakeBackwards::Initialize() {
     Robot::leds->SetColor(1, LightDriveCAN::Colors::RED, 1.0);
     Robot::leds->Update();
+    Robot::intake->cargo->Set(-1.0);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void IntakeBackwards::Execute() {
-    Robot::intake->cargo->Set(-1.0);
 
 }
 

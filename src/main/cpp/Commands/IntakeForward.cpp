@@ -26,22 +26,22 @@ IntakeForward::IntakeForward(): frc::Command() {
 void IntakeForward::Initialize() {
     Robot::leds->SetColor(1, LightDriveCAN::Colors::GREEN, 1.0);
     Robot::leds->Update();
+    Robot::intake->cargo->Set(1.0);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void IntakeForward::Execute() {
-    Robot::intake->cargo->Set(1.0);
     
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool IntakeForward::IsFinished() {
-    return false;
+    return !Robot::intake->breakBeam->Get(); // breakBeam is false when beam is broken
 }
 
 // Called once after isFinished returns true
 void IntakeForward::End() {
-
+    Robot::intake->cargo->Set(0.0);
 }
 
 // Called when another command which requires one or more of the same
