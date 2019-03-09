@@ -28,11 +28,21 @@ void Premade1::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void Premade1::Execute() {
-
+    angleError = Robot::arm->Get_Angle() - angleGoal;
+    angleProportion = angleError / angleGoal;
+    if (angleError > 0){
+        Robot::arm->armMotor->Set(-angleProportion - 0.2);
+    }
+    else{
+        Robot::arm->armMotor->Set(angleProportion + 0.2);
+    }
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool Premade1::IsFinished() {
+    if (abs(angleError) < 2){
+        return true;
+    }
     return false;
 }
 

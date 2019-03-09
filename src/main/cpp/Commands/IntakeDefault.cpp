@@ -35,7 +35,7 @@ void IntakeDefault::Execute() {
         Robot::leds->Update();
     }
     else {
-        Robot::intake->cargo->Set(0.0);
+        Robot::intake->cargo->Set(0.2);
         Robot::leds->SetColor(1, LightDriveCAN::Colors::OFF);
         Robot::leds->Update();
     }

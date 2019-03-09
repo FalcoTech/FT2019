@@ -39,7 +39,7 @@ void Robot::RobotInit() {
 	chassis->isReversed = true;
 	chassis->pneumaticStatus = false;
 	intake->isExtended = false;
-	intake->hatchEngaged = true;
+	intake->hatchEngaged = false;
 	intake->isTilted = false;
 	Robot::chassis->shifter->Set(frc::DoubleSolenoid::Value::kReverse);
 	Robot::intake->clawExtend->Set(frc::DoubleSolenoid::Value::kReverse);
