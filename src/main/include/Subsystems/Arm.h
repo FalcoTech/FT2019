@@ -36,6 +36,8 @@ public:
 	std::shared_ptr<frc::AnalogInput> angle;
 	double Get_Angle();
 
+	const double UPPER_LIMIT = 180.0;
+	const double LOWER_LIMIT = 0.0;
 };
 
 #endif

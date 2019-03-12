@@ -36,17 +36,17 @@ void Robot::RobotInit() {
 	leds.reset(new LightDriveCAN());
 
 	// Initializing pneumatic states
-	chassis->isReversed = true;
+	chassis->isReversed = false;
 	chassis->pneumaticStatus = false;
 	intake->isExtended = false;
 	intake->hatchEngaged = false;
 	intake->isTilted = false;
 	Robot::chassis->shifter->Set(frc::DoubleSolenoid::Value::kReverse);
 	Robot::intake->clawExtend->Set(frc::DoubleSolenoid::Value::kReverse);
-	Robot::intake->hatch->Set(false);
-	Robot::intake->clawTilt->Set(false);
+	Robot::intake->hatch->Set(intake->hatchEngaged);
+	Robot::intake->clawTilt->Set(intake->isTilted);
 	
-	frc::CameraServer::GetInstance()->StartAutomaticCapture();
+	//frc::CameraServer::GetInstance()->StartAutomaticCapture();
 
 	// This MUST be here. If the OI creates Commands (which it very likely
 	// will), constructing it during the construction of CommandBase (from

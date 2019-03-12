@@ -41,7 +41,7 @@ bool IntakeForward::IsFinished() {
 
 // Called once after isFinished returns true
 void IntakeForward::End() {
-    Robot::intake->cargo->Set(0.0);
+    Robot::intake->cargo->Set(0.2);
 }
 
 // Called when another command which requires one or more of the same
