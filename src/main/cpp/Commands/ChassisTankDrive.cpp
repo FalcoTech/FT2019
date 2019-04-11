@@ -28,11 +28,17 @@ void ChassisTankDrive::Initialize() {
 }
 
 // Called repeatedly when this Command is scheduled to run
+const double SPEED_MODIFIER = 0.75;
 void ChassisTankDrive::Execute() {
-    Robot::chassis->robotDrive->TankDrive(Robot::oi->getDriver()->GetRawAxis(Robot::oi->LEFT_Y_AXIS),
-                                          Robot::oi->getDriver()->GetRawAxis(Robot::oi->RIGHT_Y_AXIS));
+    if (Robot::chassis->isReversed){
+        Robot::chassis->robotDrive->TankDrive(Robot::oi->getDriver()->GetRawAxis(Robot::oi->RIGHT_Y_AXIS)*SPEED_MODIFIER,
+                                              Robot::oi->getDriver()->GetRawAxis(Robot::oi->LEFT_Y_AXIS)*SPEED_MODIFIER);
+    }
+    else{
+        Robot::chassis->robotDrive->TankDrive(Robot::oi->getDriver()->GetRawAxis(Robot::oi->LEFT_Y_AXIS)*SPEED_MODIFIER,
+                                              Robot::oi->getDriver()->GetRawAxis(Robot::oi->RIGHT_Y_AXIS)*SPEED_MODIFIER);
+    }
 }
-
 // Make this return true when this Command no longer needs to run execute()
 bool ChassisTankDrive::IsFinished() {
     return false;
@@ -45,6 +51,6 @@ void ChassisTankDrive::End() {
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ChassisTankDrive::Interrupted() {
+void ChassisTankDrive::Interrupted(){
 
 }

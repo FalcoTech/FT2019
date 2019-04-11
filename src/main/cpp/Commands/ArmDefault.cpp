@@ -24,33 +24,21 @@ ArmDefault::ArmDefault(): frc::Command() {
 
 // Called just before this Command runs the first time
 void ArmDefault::Initialize() {
-    armSpeed = 0.2;
+
 }
 
 // Called repeatedly when this Command is scheduled to run
 void ArmDefault::Execute() {
-    currentAngle = Robot::arm->Get_Angle();
-
     frc::SmartDashboard::PutNumber("Angle Voltage", Robot::arm->angle->GetAverageVoltage());
-    frc::SmartDashboard::PutNumber("Angle", currentAngle);
-
-    // Pushing downwards on the joystick
-    // if (Robot::oi->getCo_Pilot()->GetRawAxis(Robot::oi->LEFT_Y_AXIS) == 1.0 && currentAngle > Robot::arm->LOWER_LIMIT){
+    frc::SmartDashboard::PutNumber("Angle", Robot::arm->Get_Angle());
     if (Robot::oi->getCo_Pilot()->GetRawAxis(Robot::oi->LEFT_Y_AXIS) == 1.0){
-        //Robot::arm->armMotor->Set(-armSpeed);
-        Robot::arm->armMotor->Set(-1.0);
-        armSpeed *= 1.05;
+        Robot::arm->armMotor->Set(-0.75);
     }
-    // Pushing upwards on the joystick
-    // else if (Robot::oi->getCo_Pilot()->GetRawAxis(Robot::oi->LEFT_Y_AXIS) == -1.0 && currentAngle < Robot::arm->UPPER_LIMIT){
     else if (Robot::oi->getCo_Pilot()->GetRawAxis(Robot::oi->LEFT_Y_AXIS) == -1.0){
-        //Robot::arm->armMotor->Set(armSpeed);
-        Robot::arm->armMotor->Set(1.0);
-        armSpeed *= 1.05;
+        Robot::arm->armMotor->Set(0.75);
     }
     else {
         Robot::arm->armMotor->Set(0.0);
-        armSpeed = 0.2;
     }
     
 }

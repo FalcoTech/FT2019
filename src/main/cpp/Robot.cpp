@@ -37,16 +37,18 @@ void Robot::RobotInit() {
 
 	// Initializing pneumatic states
 	chassis->isReversed = false;
+	Robot::chassis->leftMotors->SetInverted(false);
+    Robot::chassis->rightMotors->SetInverted(false);
 	chassis->pneumaticStatus = false;
 	intake->isExtended = false;
 	intake->hatchEngaged = false;
-	intake->isTilted = false;
+	intake->isTilted = true;
 	Robot::chassis->shifter->Set(frc::DoubleSolenoid::Value::kReverse);
 	Robot::intake->clawExtend->Set(frc::DoubleSolenoid::Value::kReverse);
-	Robot::intake->hatch->Set(intake->hatchEngaged);
-	Robot::intake->clawTilt->Set(intake->isTilted);
+	Robot::intake->hatch->Set(frc::DoubleSolenoid::Value::kReverse);
+	Robot::intake->clawTilt->Set(frc::DoubleSolenoid::Value::kForward);
 	
-	//frc::CameraServer::GetInstance()->StartAutomaticCapture();
+	frc::CameraServer::GetInstance()->StartAutomaticCapture(0);
 
 	// This MUST be here. If the OI creates Commands (which it very likely
 	// will), constructing it during the construction of CommandBase (from
@@ -72,8 +74,8 @@ void Robot::RobotInit() {
 void Robot::DisabledInit(){
 	Robot::chassis->shifter->Set(frc::DoubleSolenoid::Value::kReverse);
 	Robot::intake->clawExtend->Set(frc::DoubleSolenoid::Value::kReverse);
-	Robot::intake->hatch->Set(false);
-	Robot::intake->clawTilt->Set(false);
+	Robot::intake->hatch->Set(frc::DoubleSolenoid::Value::kReverse);
+	Robot::intake->clawTilt->Set(frc::DoubleSolenoid::Value::kForward);
 }
 
 void Robot::DisabledPeriodic() {

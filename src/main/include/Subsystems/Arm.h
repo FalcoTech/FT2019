@@ -35,9 +35,10 @@ public:
 	std::shared_ptr<frc::SpeedController> armMotor;
 	std::shared_ptr<frc::AnalogInput> angle;
 	double Get_Angle();
-
-	const double UPPER_LIMIT = 180.0;
-	const double LOWER_LIMIT = 0.0;
+	const double ERROR_MARGIN = 0.1; //The degrees you can be off from the angle goal
+	const double CHAIN_SLOP = 5.0; //The angle that the arm changes due to slop in the chain
+	const double UPPER_LIMIT = 265.0; //Highest we need to go
+	const double LOWER_LIMIT = 152.0; //Lowest we need to go
 };
 
 #endif

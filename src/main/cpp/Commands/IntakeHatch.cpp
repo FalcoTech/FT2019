@@ -29,12 +29,15 @@ void IntakeHatch::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void IntakeHatch::Execute() {
-    if(Robot::intake->hatchEngaged){
-        Robot::intake->hatch->Set(true);
+    if (Robot::intake->hatchEngaged == true){
+        Robot::intake->hatch->Set(frc::DoubleSolenoid::Value::kForward);
         Robot::intake->hatchEngaged = false;
+
+        Robot::leds->SetColor(2, LightDriveCAN::Colors::RED);
+        Robot::leds->Update();
     }
-    else{
-        Robot::intake->hatch->Set(false);
+    else {
+        Robot::intake->hatch->Set(frc::DoubleSolenoid::Value::kReverse);
         Robot::intake->hatchEngaged = true;
     }
 }

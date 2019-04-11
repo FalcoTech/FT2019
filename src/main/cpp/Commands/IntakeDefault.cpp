@@ -31,16 +31,16 @@ void IntakeDefault::Initialize() {
 void IntakeDefault::Execute() {
     if (Robot::oi->getCo_Pilot()->GetRawAxis(Robot::oi->L_Trigger) == 1.0){
         Robot::intake->cargo->Set(-1.0);
-        Robot::leds->SetColor(1, LightDriveCAN::Colors::RED, 1.0);
-        Robot::leds->Update();
+        //Robot::leds->SetColor(1, LightDriveCAN::Colors::RED, 1.0);
+        //Robot::leds->Update();
     }
     else if(!Robot::intake->breakBeam->Get()){
         Robot::intake->cargo->Set(0.2);
     }
     else {
         Robot::intake->cargo->Set(0.0);
-        Robot::leds->SetColor(1, LightDriveCAN::Colors::OFF);
-        Robot::leds->Update();
+        //Robot::leds->SetColor(1, LightDriveCAN::Colors::OFF);
+        //Robot::leds->Update();
     }
     frc::SmartDashboard::PutBoolean("Beam Break Value:", Robot::intake->breakBeam->Get());
 }

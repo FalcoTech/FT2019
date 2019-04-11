@@ -28,13 +28,25 @@ void Premade3::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void Premade3::Execute() {
-
+    angleError = Robot::arm->Get_Angle() - angleGoal;
+    angleProportion = angleError / angleGoal;
+    if (angleError > 0){
+        Robot::arm->armMotor->Set(-angleProportion - 0.2);
+    }
+    else{
+        Robot::arm->armMotor->Set(angleProportion + 0.2);
+    }
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool Premade3::IsFinished() {
+    return !Robot::intake->breakBeam->Get();
+    if (abs(angleError) < Robot::arm->ERROR_MARGIN){
+        return true;
+    }
     return false;
 }
+
 
 // Called once after isFinished returns true
 void Premade3::End() {

@@ -30,11 +30,11 @@ void IntakeTilt::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void IntakeTilt::Execute() {
     if(Robot::intake->isTilted){
-        Robot::intake->clawTilt->Set(true);
+        Robot::intake->clawTilt->Set(frc::DoubleSolenoid::Value::kForward);
         Robot::intake->isTilted = false;
     }
     else{
-        Robot::intake->clawTilt->Set(false);
+        Robot::intake->clawTilt->Set(frc::DoubleSolenoid::Value::kReverse);
         Robot::intake->isTilted = true;
     }
 }
