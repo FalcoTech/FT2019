@@ -33,7 +33,6 @@
 #include "Commands/LiftWheels.h"
 #include "Commands/LiftFrontForward.h"
 #include "Commands/LiftFrontReverse.h"
-#include "Commands/LightsDefault.h"
 #include "Commands/Premade1.h"
 #include "Commands/Premade2.h"
 #include "Commands/Premade3.h"
@@ -71,6 +70,7 @@ OI::OI() {
     fightB->WhileHeld(new LiftFrontReverse());
     fightA.reset(new frc::JoystickButton(co_Pilot.get(), 1));
     fightA->WhenPressed(new IntakeTilt());
+    
 
     driver.reset(new frc::Joystick(0));
     rStickIn.reset(new frc::JoystickButton(driver.get(), 10));
@@ -89,7 +89,7 @@ OI::OI() {
     buttonB->WhenPressed(new DoNothing());
     buttonA.reset(new frc::JoystickButton(driver.get(), 1));
     buttonA->WhenPressed(new DoNothing());
-
+    
     // SmartDashboard Buttons
     /*
     frc::SmartDashboard::PutData("LiftDefault", new LiftDefault());

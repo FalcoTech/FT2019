@@ -38,6 +38,8 @@ void ChassisTankDrive::Execute() {
         Robot::chassis->robotDrive->TankDrive(Robot::oi->getDriver()->GetRawAxis(Robot::oi->LEFT_Y_AXIS)*SPEED_MODIFIER,
                                               Robot::oi->getDriver()->GetRawAxis(Robot::oi->RIGHT_Y_AXIS)*SPEED_MODIFIER);
     }
+
+    Robot::leds->Update();
 }
 // Make this return true when this Command no longer needs to run execute()
 bool ChassisTankDrive::IsFinished() {
