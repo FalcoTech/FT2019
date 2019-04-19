@@ -31,7 +31,7 @@ void LiftDefault::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void LiftDefault::Execute() {
     frc::SmartDashboard::PutBoolean("Hall Mark Value", Robot::lift->hallUp->Get());
-    // Axis control for front lift
+    // Axis (trigger) control for linear lift in the back
     if (Robot::oi->getCo_Pilot()->GetRawAxis(Robot::oi->R_Trigger) == 1.0 && Robot::lift->hallUp->Get()){
         Robot::lift->back->Set(-1.0);
     }
@@ -39,6 +39,7 @@ void LiftDefault::Execute() {
         Robot::lift->back->Set(0.0);
     }
 
+    // Joystick axis control for the "monkey paw" in the front
     Robot::lift->front->Set(Robot::oi->getCo_Pilot()->GetRawAxis(Robot::oi->RIGHT_Y_AXIS));
 }
 

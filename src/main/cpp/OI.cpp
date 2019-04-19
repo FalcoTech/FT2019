@@ -67,7 +67,8 @@ OI::OI() {
     fightX.reset(new frc::JoystickButton(co_Pilot.get(), 3));
     fightX->WhenPressed(new IntakeExtend());
     fightB.reset(new frc::JoystickButton(co_Pilot.get(), 2));
-    fightB->WhileHeld(new LiftFrontReverse());
+    //fightB->WhileHeld(new LiftFrontReverse());
+    fightB->WhileHeld(new DoNothing());
     fightA.reset(new frc::JoystickButton(co_Pilot.get(), 1));
     fightA->WhenPressed(new IntakeTilt());
     
