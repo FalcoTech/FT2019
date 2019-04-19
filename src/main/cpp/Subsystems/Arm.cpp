@@ -51,5 +51,5 @@ void Arm::Periodic() {
 // here. Call these from Commands.
 
 double Arm::Get_Angle(){
-    return 93.979 * (Robot::arm->angle->GetAverageVoltage() - 0.48)  ;
+    return 93.979 * (Robot::arm->angle->GetAverageVoltage() - 0.48)  - Robot::arm->ANGLE_OFFSET;
 }
