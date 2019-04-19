@@ -40,7 +40,6 @@ void Premade2::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool Premade2::IsFinished() {
-    return !Robot::intake->breakBeam->Get();
     if (abs(angleError) < Robot::arm->ERROR_MARGIN){
         return true;
     }
